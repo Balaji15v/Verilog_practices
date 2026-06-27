@@ -3,10 +3,11 @@ always @(posedge clk) begin
     if(rst)
     out<=1'b0;
     else begin
-    if(dir)
-    out<=out+1'b1;
-    else
-    out<=out-1'b1;
+        case(dir)
+            1'b1: out<=out+1;
+            1'b0: out<=out-1;
+            default: out<=0;
+        endcase
     end
 end
 endmodule
